@@ -23,7 +23,7 @@ async function loadCurrentTrack() {
       return;
     }
 
-    if (!data.is_playing || !data.track) {
+    if (!data.track) {
       statusNode.textContent = data.message || "Nothing is playing right now.";
       if (data.updated_at) {
         updatedNode.textContent = `last checked: ${new Date(data.updated_at).toLocaleString()}`;
@@ -31,7 +31,7 @@ async function loadCurrentTrack() {
       return;
     }
 
-    statusNode.textContent = "playing now";
+    statusNode.textContent = data.is_playing ? "playing now" : "last played";
     trackNode.textContent = `track: ${data.track.name}`;
     artistNode.textContent = `artist: ${data.track.artist}`;
     albumNode.textContent = `album: ${data.track.album}`;

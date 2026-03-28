@@ -22,6 +22,15 @@ def write_payload(payload: dict) -> None:
     OUTPUT_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
+def read_existing_payload() -> dict | None:
+    if not OUTPUT_PATH.exists():
+        return None
+    try:
+        return json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+
+
 def build_basic_auth(client_id: str, client_secret: str) -> str:
     token = base64.b64encode(f"{client_id}:{client_secret}".encode("utf-8")).decode("utf-8")
     return f"Basic {token}"
@@ -84,6 +93,17 @@ def extract_payload(api_payload: dict) -> dict:
     }
 
 
+def build_last_played_payload(existing_payload: dict | None) -> dict:
+    track = (existing_payload or {}).get("track")
+    return {
+        "is_playing": False,
+        "available": True,
+        "message": "Nothing is playing right now.",
+        "updated_at": iso_now(),
+        "track": track,
+    }
+
+
 def main() -> None:
     client_id = os.environ.get("SPOTIFY_CLIENT_ID")
     client_secret = os.environ.get("SPOTIFY_CLIENT_SECRET")
@@ -102,18 +122,11 @@ def main() -> None:
         return
 
     try:
+        existing_payload = read_existing_payload()
         access_token = fetch_access_token(client_id, client_secret, refresh_token)
         current = fetch_current_track(access_token)
         if current["status"] == 204:
-            write_payload(
-                {
-                    "is_playing": False,
-                    "available": True,
-                    "message": "Nothing is playing right now.",
-                    "updated_at": iso_now(),
-                    "track": None,
-                }
-            )
+            write_payload(build_last_played_payload(existing_payload))
             return
 
         write_payload(extract_payload(current["data"]))
