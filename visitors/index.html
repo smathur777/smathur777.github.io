@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>visitors</title>
+    <title>visits</title>
     <style>
         body {
             margin: 0;
@@ -52,20 +52,12 @@
             cursor: pointer;
         }
 
-        .muted {
-            color: #b9b9b9;
-        }
     </style>
 </head>
 <body>
     <main>
         <p><a href="../">home</a></p>
-        <h1>visitors</h1>
-
-        <div class="frame">
-            <p>This page does not secretly identify people.</p>
-            <p class="muted">Because this site is hosted as static GitHub Pages, there is no built-in server here to safely store a site-wide identity log. Instead, this page keeps a transparent visit notebook in your own browser only.</p>
-        </div>
+        <h1>visits</h1>
 
         <div class="frame">
             <h2>what this browser saved</h2>
@@ -81,14 +73,6 @@
                 <tbody id="visit-log"></tbody>
             </table>
             <button id="clear-log" type="button">clear this browser log</button>
-        </div>
-
-        <div class="frame">
-            <h2>how i would do a real shared log</h2>
-            <p>1. Add a small backend endpoint instead of pure static hosting.</p>
-            <p>2. Show a clear consent notice before storing anything personal.</p>
-            <p>3. Log only what is actually needed, with a retention policy and privacy disclosure.</p>
-            <p>4. Render a shared visitors page from that backend data.</p>
         </div>
     </main>
     <script src="./visitors.js"></script>
