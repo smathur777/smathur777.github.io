@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visitors</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 24px 16px;
+            background: #000000;
+            color: #f3f3f3;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #8ff0a4;
+        }
+
+        .frame {
+            margin-top: 18px;
+            padding: 16px;
+            border: 1px solid #3f3f3f;
+            background: #090909;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #3f3f3f;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        button {
+            margin-top: 12px;
+            padding: 8px 12px;
+            border: 1px solid #3f3f3f;
+            background: #161616;
+            color: #f3f3f3;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .muted {
+            color: #b9b9b9;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p><a href="../">home</a></p>
+        <h1>visitors</h1>
+
+        <div class="frame">
+            <p>This page does not secretly identify people.</p>
+            <p class="muted">Because this site is hosted as static GitHub Pages, there is no built-in server here to safely store a site-wide identity log. Instead, this page keeps a transparent visit notebook in your own browser only.</p>
+        </div>
+
+        <div class="frame">
+            <h2>what this browser saved</h2>
+            <p id="summary">loading...</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>time</th>
+                        <th>page</th>
+                        <th>details</th>
+                    </tr>
+                </thead>
+                <tbody id="visit-log"></tbody>
+            </table>
+            <button id="clear-log" type="button">clear this browser log</button>
+        </div>
+
+        <div class="frame">
+            <h2>how i would do a real shared log</h2>
+            <p>1. Add a small backend endpoint instead of pure static hosting.</p>
+            <p>2. Show a clear consent notice before storing anything personal.</p>
+            <p>3. Log only what is actually needed, with a retention policy and privacy disclosure.</p>
+            <p>4. Render a shared visitors page from that backend data.</p>
+        </div>
+    </main>
+    <script src="./visitors.js"></script>
+</body>
+</html>
