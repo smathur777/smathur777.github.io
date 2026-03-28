@@ -4,3 +4,8 @@ compatibility_date = "2026-03-28"
 
 [observability]
 enabled = true
+
+# Create and bind a KV namespace named SNAKE_LEADERBOARD before deploy.
+# [[kv_namespaces]]
+# binding = "SNAKE_LEADERBOARD"
+# id = "<your-kv-namespace-id>"

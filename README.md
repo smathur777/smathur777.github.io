@@ -15,7 +15,9 @@ Fast live setup with Cloudflare Workers:
 5. Deploy the Worker and copy its public URL, for example:
    `https://sameer-currently-playing.your-subdomain.workers.dev/current-track`
 6. Paste that URL into `currently-playing/config.js` as `window.CURRENTLY_PLAYING_API_URL`.
-7. Push the site so the page polls the Worker every 15 seconds.
+7. Paste `https://sameer-currently-playing.your-subdomain.workers.dev/snake-leaderboard`
+   into `snake/config.js` as `window.SNAKE_LEADERBOARD_API_URL`.
+8. Push the site so both pages use the Worker.
 
 GitHub Actions fallback:
 

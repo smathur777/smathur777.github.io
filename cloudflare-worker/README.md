@@ -1,6 +1,6 @@
 # Cloudflare Worker Setup
 
-This worker exposes a public `current-track` endpoint for the website and keeps Spotify secrets off GitHub Pages.
+This worker exposes a public `current-track` endpoint for the website, plus a global `snake-leaderboard` endpoint.
 
 ## 1. Recreate your Spotify refresh token
 
@@ -28,7 +28,21 @@ wrangler deploy
 
 Use the existing `wrangler.toml` and `src/index.js` in this directory.
 
-## 3. Set Worker secrets
+## 3. Create a KV namespace for Snake leaderboard
+
+```bash
+npx wrangler kv namespace create SNAKE_LEADERBOARD
+```
+
+Copy the namespace ID from the output and add it to `wrangler.toml`:
+
+```toml
+[[kv_namespaces]]
+binding = "SNAKE_LEADERBOARD"
+id = "<your-kv-namespace-id>"
+```
+
+## 4. Set Worker secrets
 
 ```bash
 wrangler secret put SPOTIFY_CLIENT_ID
@@ -36,7 +50,7 @@ wrangler secret put SPOTIFY_CLIENT_SECRET
 wrangler secret put SPOTIFY_REFRESH_TOKEN
 ```
 
-## 4. Deploy
+## 5. Deploy
 
 ```bash
 wrangler deploy
@@ -46,7 +60,11 @@ That will give you a URL like:
 
 `https://sameer-currently-playing.<your-subdomain>.workers.dev/current-track`
 
-## 5. Connect the website
+The same worker will also expose:
+
+`https://sameer-currently-playing.<your-subdomain>.workers.dev/snake-leaderboard`
+
+## 6. Connect the website
 
 Paste that URL into:
 
@@ -59,3 +77,11 @@ window.CURRENTLY_PLAYING_API_URL = "https://sameer-currently-playing.<your-subdo
 ```
 
 Then push the site repo again.
+
+For Snake, also set:
+
+`snake/config.js`
+
+```js
+window.SNAKE_LEADERBOARD_API_URL = "https://sameer-currently-playing.<your-subdomain>.workers.dev/snake-leaderboard";
+```

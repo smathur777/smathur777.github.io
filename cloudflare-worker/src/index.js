@@ -1,3 +1,5 @@
+import { handleLeaderboard } from "./leaderboard";
+
 const TOKEN_URL = "https://accounts.spotify.com/api/token";
 const CURRENTLY_PLAYING_URL = "https://api.spotify.com/v1/me/player/currently-playing";
 const RECENTLY_PLAYED_URL = "https://api.spotify.com/v1/me/player/recently-played?limit=1";
@@ -109,6 +111,10 @@ export default {
     }
 
     const url = new URL(request.url);
+    if (url.pathname === "/snake-leaderboard") {
+      return handleLeaderboard(request, env);
+    }
+
     if (url.pathname !== "/" && url.pathname !== "/current-track") {
       return jsonResponse({ error: "Not found" }, 404);
     }
