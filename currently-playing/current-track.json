@@ -1,7 +1,7 @@
 {
   "is_playing": false,
-  "available": false,
-  "message": "Spotify data is not configured yet.",
-  "updated_at": null,
+  "available": true,
+  "message": "Nothing is playing right now.",
+  "updated_at": "2026-03-28T17:57:55.370834+00:00",
   "track": null
 }
