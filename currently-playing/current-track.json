@@ -1,7 +1,13 @@
 {
-  "is_playing": false,
+  "is_playing": true,
   "available": true,
-  "message": "Nothing is playing right now.",
-  "updated_at": "2026-03-28T17:57:55.370834+00:00",
-  "track": null
+  "message": "Currently playing on Spotify.",
+  "updated_at": "2026-03-28T18:01:02.822818+00:00",
+  "track": {
+    "name": "Hunter",
+    "artist": "Bj\u00f6rk",
+    "album": "Homogenic",
+    "image": "https://i.scdn.co/image/ab67616d0000b27361340a8868455be0d958fb39",
+    "url": "https://open.spotify.com/track/3UHuJt2WkLxGdbxn36T9vc"
+  }
 }
