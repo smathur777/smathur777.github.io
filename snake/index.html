@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snake</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 24px 16px;
+            background: #000000;
+            color: #f3f3f3;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        main {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #8ff0a4;
+        }
+
+        .frame {
+            padding: 16px;
+            border: 1px solid #3f3f3f;
+            background: #090909;
+        }
+
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border: 1px solid #3f3f3f;
+            background: #101820;
+            image-rendering: pixelated;
+        }
+
+        button {
+            margin-top: 12px;
+            padding: 8px 12px;
+            border: 1px solid #3f3f3f;
+            background: #161616;
+            color: #f3f3f3;
+            font: inherit;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p><a href="../">home</a></p>
+        <h1>snake</h1>
+        <p>old-school page, modern snake.</p>
+        <div class="frame">
+            <div class="hud">
+                <div id="score">score: 0</div>
+                <div id="message">arrow keys or wasd to move</div>
+            </div>
+            <canvas id="game" width="600" height="400" aria-label="Snake game"></canvas>
+            <button id="restart" type="button">restart</button>
+        </div>
+    </main>
+    <script src="./snake.js"></script>
+</body>
+</html>
