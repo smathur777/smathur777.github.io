@@ -1,0 +1,7 @@
+{
+  "is_playing": false,
+  "available": false,
+  "message": "Spotify data is not configured yet.",
+  "updated_at": null,
+  "track": null
+}
