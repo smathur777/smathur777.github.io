@@ -1,0 +1,6 @@
+name = "sameer-currently-playing"
+main = "src/index.js"
+compatibility_date = "2026-03-28"
+
+[observability]
+enabled = true

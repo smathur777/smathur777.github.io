@@ -1,3 +1,15 @@
+const FALLBACK_URL = "./current-track.json";
+const POLL_INTERVAL_MS = 15000;
+const apiUrl =
+  window.CURRENTLY_PLAYING_API_URL && window.CURRENTLY_PLAYING_API_URL.trim()
+    ? window.CURRENTLY_PLAYING_API_URL.trim()
+    : FALLBACK_URL;
+
+async function fetchCurrentTrack() {
+  const response = await fetch(apiUrl, { cache: "no-store" });
+  return response.json();
+}
+
 async function loadCurrentTrack() {
   const statusNode = document.getElementById("status");
   const trackNode = document.getElementById("track");
@@ -8,8 +20,7 @@ async function loadCurrentTrack() {
   const artNode = document.getElementById("art");
 
   try {
-    const response = await fetch("./current-track.json", { cache: "no-store" });
-    const data = await response.json();
+    const data = await fetchCurrentTrack();
 
     trackNode.textContent = "";
     artistNode.textContent = "";
@@ -56,3 +67,4 @@ async function loadCurrentTrack() {
 }
 
 loadCurrentTrack();
+setInterval(loadCurrentTrack, POLL_INTERVAL_MS);
