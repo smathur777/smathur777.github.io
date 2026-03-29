@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sameer mathur</title>
     <style>
+        :root {
+            --bg: #000000;
+            --text: #f4f4f4;
+            --link: #ffffff;
+            --border: #3f3f3f;
+            --panel: #090909;
+        }
+
         body {
             margin: 0;
-            background-color: #000000;
-            color: #f4f4f4;
+            background-color: var(--bg);
+            color: var(--text);
             font-family: "Times New Roman", Times, serif;
+        }
+
+        body.light-mode {
+            --bg: #ffffff;
+            --text: #111111;
+            --link: #111111;
+            --border: #bdbdbd;
+            --panel: #f4f4f4;
         }
 
         main {
@@ -23,14 +39,14 @@
         }
 
         a {
-            color: #26b044;
+            color: var(--link);
         }
 
         .box {
             margin-top: 24px;
             padding: 14px 16px;
-            border: 1px solid #3f3f3f;
-            background: #090909;
+            border: 1px solid var(--border);
+            background: var(--panel);
         }
 
         .box h2 {
@@ -45,10 +61,27 @@
             padding-left: 20px;
             margin-bottom: 0;
         }
+
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--text);
+            font: inherit;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <main>
+        <div class="topbar">
+            <button id="theme-toggle" type="button">light mode</button>
+        </div>
         <header>
             <h1>hi, my name's sameer mathur</h1>
             <p>computer engineering &amp; economics @ university of maryland</p>
@@ -71,5 +104,6 @@
             </ul>
         </section>
     </main>
+    <script src="./theme.js"></script>
 </body>
 </html>

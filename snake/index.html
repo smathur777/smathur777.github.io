@@ -5,12 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>snake</title>
     <style>
+        :root {
+            --bg: #000000;
+            --text: #f3f3f3;
+            --link: #ffffff;
+            --border: #3f3f3f;
+            --panel: #090909;
+            --button-bg: #161616;
+            --input-bg: #111111;
+            --canvas-bg: #101820;
+        }
+
         body {
             margin: 0;
             padding: 24px 16px;
-            background: #000000;
-            color: #f3f3f3;
+            background: var(--bg);
+            color: var(--text);
             font-family: "Courier New", Courier, monospace;
+        }
+
+        body.light-mode {
+            --bg: #ffffff;
+            --text: #111111;
+            --link: #111111;
+            --border: #bdbdbd;
+            --panel: #f4f4f4;
+            --button-bg: #e8e8e8;
+            --input-bg: #ffffff;
+            --canvas-bg: #dfe8ef;
         }
 
         main {
@@ -19,13 +41,13 @@
         }
 
         a {
-            color: #8ff0a4;
+            color: var(--link);
         }
 
         .frame {
             padding: 16px;
-            border: 1px solid #3f3f3f;
-            background: #090909;
+            border: 1px solid var(--border);
+            background: var(--panel);
         }
 
         .hud {
@@ -41,8 +63,8 @@
             width: 100%;
             max-width: 600px;
             height: auto;
-            border: 1px solid #3f3f3f;
-            background: #101820;
+            border: 1px solid var(--border);
+            background: var(--canvas-bg);
             image-rendering: pixelated;
             touch-action: none;
         }
@@ -50,9 +72,9 @@
         button {
             margin-top: 12px;
             padding: 8px 12px;
-            border: 1px solid #3f3f3f;
-            background: #161616;
-            color: #f3f3f3;
+            border: 1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
             font: inherit;
             cursor: pointer;
         }
@@ -111,17 +133,33 @@
 
         .name-row input {
             padding: 8px 10px;
-            border: 1px solid #3f3f3f;
-            background: #111111;
-            color: #f3f3f3;
+            border: 1px solid var(--border);
+            background: var(--input-bg);
+            color: var(--text);
             font: inherit;
             min-width: 220px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .home-link {
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <main>
-        <p><a href="../">home</a></p>
+        <div class="topbar">
+            <p class="home-link"><a href="../">home</a></p>
+            <button id="theme-toggle" type="button">light mode</button>
+        </div>
         <h1>snake</h1>
         <div class="frame">
             <div class="name-row">
@@ -150,6 +188,7 @@
             <ol id="leaderboard"></ol>
         </div>
     </main>
+    <script src="../theme.js"></script>
     <script src="./config.js"></script>
     <script src="./snake.js"></script>
 </body>
