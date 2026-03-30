@@ -1,27 +1,12 @@
 # smathur777.github.io
 
-Spotify setup for `currently playing`:
+Cloudflare Worker setup for the global Snake leaderboard:
 
-Fast live setup with Cloudflare Workers:
-
-1. In your Spotify app, add redirect URI `http://127.0.0.1:8888/callback`.
-2. Re-authorize Spotify with these scopes:
-   `user-read-currently-playing user-read-recently-played`
-3. In Cloudflare, create a Worker from `cloudflare-worker/`.
-4. In the Worker, set secrets:
-   `SPOTIFY_CLIENT_ID`
-   `SPOTIFY_CLIENT_SECRET`
-   `SPOTIFY_REFRESH_TOKEN`
-5. Deploy the Worker and copy its public URL, for example:
-   `https://sameer-currently-playing.your-subdomain.workers.dev/current-track`
-6. Paste that URL into `currently-playing/config.js` as `window.CURRENTLY_PLAYING_API_URL`.
-7. Paste `https://sameer-currently-playing.your-subdomain.workers.dev/snake-leaderboard`
-   into `snake/config.js` as `window.SNAKE_LEADERBOARD_API_URL`.
-8. Push the site so both pages use the Worker.
-
-GitHub Actions fallback:
-
-1. Create a Spotify app and enable the `user-read-currently-playing` scope.
-2. Add `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` as GitHub repository secrets.
-3. Run the `Update Currently Playing` GitHub Actions workflow once manually or wait for the 5-minute schedule.
-my website or whatever
+1. In Cloudflare, create a Worker from `cloudflare-worker/`.
+2. Create a KV namespace:
+   `npx wrangler kv namespace create SNAKE_LEADERBOARD`
+3. Add the namespace ID to `cloudflare-worker/wrangler.toml`.
+4. Deploy the Worker and copy its public leaderboard URL:
+   `https://sameer-snake-leaderboard.your-subdomain.workers.dev/snake-leaderboard`
+5. Paste that URL into `snake/config.js` as `window.SNAKE_LEADERBOARD_API_URL`.
+6. Push the site again.
