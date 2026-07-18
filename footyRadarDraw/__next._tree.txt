@@ -1,2 +1,2 @@
-:HL["/footyRadarDraw/_next/static/chunks/01_v-aauk-iwp.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"GRBurYEXo3Kh1yR7rqqVt"}
+:HL["/footyRadarDraw/_next/static/chunks/03vy1qp9a_8sa.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"miQQAN4RHLW4-AV9HV4Nd"}
