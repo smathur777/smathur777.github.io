@@ -10,7 +10,7 @@ function applyTheme(theme: Theme): void {
   document.body.classList.toggle("light-mode", theme === "light");
   const button = document.getElementById("theme-toggle");
   if (button) {
-    button.textContent = theme === "light" ? "dark mode" : "light mode";
+    button.textContent = theme === "light" ? "Dark Mode" : "Light Mode";
   }
 }
 
