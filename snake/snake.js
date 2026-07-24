@@ -119,8 +119,8 @@ class SnakeGame {
         this.nameInput.value = this.playerName;
         localStorage.setItem(PLAYER_NAME_KEY, this.playerName);
         this.updateHud(this.playerName
-            ? `saved as ${this.playerName}`
-            : "enter a username to save scores in this browser");
+            ? `Saved as ${this.playerName}`
+            : "Enter a username to save scores in this browser");
     }
     reset() {
         const centerX = Math.floor(GRID_WIDTH / 2);
@@ -139,8 +139,8 @@ class SnakeGame {
         this.win = false;
         this.spawnFood();
         this.updateHud(this.playerName
-            ? `arrow keys, wasd, swipe, or tap the arrows | ${this.playerName}`
-            : "arrow keys, wasd, swipe, or tap the arrows | enter username to save scores");
+            ? `Arrow keys, WASD, swipe, or tap the arrows | ${this.playerName}`
+            : "Arrow keys, WASD, swipe, or tap the arrows | Enter username to save scores");
         this.lastTimestamp = 0;
         this.accumulator = 0;
         if (this.animationFrame !== null) {
@@ -163,13 +163,13 @@ class SnakeGame {
             this.food = null;
             this.win = true;
             this.gameOver = true;
-            this.updateHud("you win. press restart to play again.");
+            this.updateHud("You win. Press Restart to play again.");
             return;
         }
         this.food = freeCells[(Math.random() * freeCells.length) | 0];
     }
     updateHud(message) {
-        this.scoreNode.textContent = `score: ${this.score}`;
+        this.scoreNode.textContent = `Score: ${this.score}`;
         this.messageNode.textContent = message;
     }
     saveScore() {
@@ -190,7 +190,7 @@ class SnakeGame {
         this.leaderboardNode.innerHTML = "";
         if (this.leaderboard.length === 0) {
             const item = document.createElement("li");
-            item.textContent = "no scores yet.";
+            item.textContent = "No scores yet.";
             this.leaderboardNode.appendChild(item);
             return;
         }
@@ -204,7 +204,7 @@ class SnakeGame {
         this.leaderboard = [];
         saveLeaderboard(this.leaderboard);
         this.renderLeaderboard();
-        this.updateHud("leaderboard cleared.");
+        this.updateHud("Leaderboard cleared.");
     }
     setDirection(proposed) {
         if (proposed[0] === -this.direction[0] &&
@@ -290,8 +290,8 @@ class SnakeGame {
             this.gameOver = true;
             this.saveScore();
             this.updateHud(this.playerName
-                ? "game over. score saved to this browser."
-                : "game over. enter a username to save your score.");
+                ? "Game over. Score saved to this browser."
+                : "Game over. Enter a username to save your score.");
             return;
         }
         this.snake.unshift(newHead);
@@ -301,7 +301,7 @@ class SnakeGame {
             this.delay = Math.max(MIN_DELAY_MS, this.delay - DELAY_STEP_MS);
             this.spawnFood();
             if (!this.gameOver) {
-                this.updateHud("nice.");
+                this.updateHud("Nice.");
             }
             return;
         }
@@ -344,7 +344,7 @@ class SnakeGame {
             ctx.font = "bold 24px Courier New";
             ctx.fillText(this.win ? "You Win" : "Game Over", this.canvas.width / 2, this.canvas.height / 2 - 10);
             ctx.font = "14px Courier New";
-            ctx.fillText("Press restart or space", this.canvas.width / 2, this.canvas.height / 2 + 20);
+            ctx.fillText("Press Restart or Space", this.canvas.width / 2, this.canvas.height / 2 + 20);
         }
     }
     drawCell([x, y], fill, stroke) {
